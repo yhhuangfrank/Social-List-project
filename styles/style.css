@@ -1,0 +1,103 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("../bg-img.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.navbar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.navbar .nav-item .nav-link {
+  color: white;
+}
+.navbar .nav-item .nav-link:hover {
+  background-color: rgb(136, 218, 238);
+  font-weight: 600;
+  color: black;
+}
+
+div.card {
+  min-height: 24rem;
+  border-radius: 20px;
+  background-color: rgb(2, 18, 49);
+  color: white;
+}
+div.card div.img-container {
+  border-radius: 50%;
+  overflow: hidden;
+}
+div.card div.img-container img {
+  border-radius: 50%;
+}
+div.card div.img-container img:hover {
+  transition: all 0.25s ease;
+  transform: scale(1.2);
+}
+
+.male {
+  border: 4px solid rgb(5, 129, 245);
+}
+
+.female {
+  border: 4px solid rgb(255, 40, 140);
+}
+
+#toTopBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 50px;
+  border: none;
+  outline: none;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(90, 90, 90, 0);
+  color: rgb(212, 212, 212);
+  cursor: pointer;
+  text-align: center;
+}
+#toTopBtn:hover {
+  transition: all 0.25s ease-in-out;
+  transform: scale(1.2);
+}
+
+i {
+  pointer-events: none;
+}
+
+ul.pagination a.dots {
+  cursor: default;
+  pointer-events: none;
+}
+
+div.row section.left {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #363636;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(10, 162, 192);
+}/*# sourceMappingURL=style.css.map */

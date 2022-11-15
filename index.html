@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fake Friends</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+  <body>
+    <!-- nav bar -->
+    <nav
+      class="navbar navbar-expand-lg shadow mb-5 navbar-light bg-secondary px-5"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand fw-bold fs-3" href="./index.html"
+          >Fake Friends</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="nav nav-pills me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a
+                class="nav-link active rounded-pill me-2 fs-5"
+                aria-current="page"
+                href="./index.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link rounded-pill fs-5"
+                aria-current="page"
+                href="./favorite.html"
+                >My-Friends</a
+              >
+            </li>
+          </ul>
+          <form class="d-flex">
+            <!-- <input
+              class="form-control me-2 input-search"
+              type="search"
+              placeholder="Find Someone...(Or keywords like male, female)"
+              aria-label="Search"
+            /> -->
+            <input
+              type="search"
+              list="selection"
+              placeholder="Find Someone.. (Or keywords)"
+              class="form-control me-2 input-search"
+            />
+            <datalist id="selection">
+              <option value="male">male</option>
+              <option value="female">female</option>
+            </datalist>
+            <button class="btn btn-success btn-search" type="submit">
+              Search
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <!-- change-display-mode-button -->
+    <div class="col col-sm-11 text-end" id="mode-switcher">
+      <button class="btn btn-primary" id="btn-card-ver">
+        <i class="fa-solid fa-table-cells"></i>
+      </button>
+      <button class="btn" id="btn-list-ver">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+
+    <div class="container mt-3">
+      <div class="row" id="dataPanel" data-mode="card">
+        <!-- Friends area -->
+      </div>
+    </div>
+    <!-- Pagination -->
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center" id="pagination"></ul>
+    </nav>
+    <!-- to top button -->
+    <button id="toTopBtn">&#11161;</button>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="more-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="person-modal-name">Modal title</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" id="person-modal-description">
+            <ul class="lh-lg">
+              <li class="list-unstyled"></li>
+              <li class="list-unstyled"></li>
+              <li class="list-unstyled"></li>
+              <li class="list-unstyled"></li>
+              <li class="list-unstyled"></li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/fe29b26733.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
