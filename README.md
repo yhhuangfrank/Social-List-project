@@ -7,9 +7,13 @@ A simple web application for mimiding a dating web site
 - offering default option like gender for searching
 - add friends to myfriend (favorite list)
 - manage favorite list
+- switch display mode
 
 ### Searching
 type name, surname or gender in search bar
+
+### Display change
+press icons to chage "card mode" or "list mode"
 
 ### Favorite List
 Press the `Add` button on the avatar to keep it into favorite list in homepage.
