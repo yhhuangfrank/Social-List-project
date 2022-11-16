@@ -17,24 +17,25 @@ const listBtn = document.querySelector("#btn-list-ver");
 //- 渲染畫面
 function rederFriendList(data) {
   let HTMLcontent = "";
-  data.forEach((item) => {
-    if (dataPanel.dataset.mode === "card") {
-      HTMLcontent += `
+  if (data !== []) {
+    data.forEach((item) => {
+      if (dataPanel.dataset.mode === "card") {
+        HTMLcontent += `
             <div class="col col-sm-6 col-md-4 col-lg-3 mb-3">
           <div>
             <div class="card">
             `;
-      //- 添加男女外框顏色
-      if (item.gender === "male") {
-        HTMLcontent += `
+        //- 添加男女外框顏色
+        if (item.gender === "male") {
+          HTMLcontent += `
           <div class="img-container male">
       `;
-      } else if (item.gender === "female") {
-        HTMLcontent += `
+        } else if (item.gender === "female") {
+          HTMLcontent += `
           <div class="img-container female">
       `;
-      }
-      HTMLcontent += `
+        }
+        HTMLcontent += `
                 <img
                 src=${item.avatar}
                 class="card-img-top"
@@ -66,8 +67,8 @@ function rederFriendList(data) {
           </div>
         </div>
     `;
-    } else {
-      HTMLcontent += `
+      } else {
+        HTMLcontent += `
                     <div class="col col-11 list-version-container border-top  my-2 pt-2">
           <div class="row">
             <section class="col col-8 left">${
@@ -89,9 +90,10 @@ function rederFriendList(data) {
           </div>
         </div>
       `;
-    }
-    dataPanel.innerHTML = HTMLcontent;
-  });
+      }
+    });
+  }
+  dataPanel.innerHTML = HTMLcontent;
 }
 //- 顯示格式切換功能:
 //- 確認目前頁面 -> 取得要顯示的人物資料 -> 確認是否要切換顯示格式 -> 渲染畫面
@@ -146,27 +148,13 @@ function searchFriends(keyword) {
   if (filterList.length === 0) {
     return alert(`關鍵字: ${keyword} 沒有符合條件的人物`);
   }
-
-  // paginator(filterList.length);
-  // rederFriendList(getListByPage(1));
   genPagination(calPages(), 1);
   rederFriendList(getListByPage(1));
   //-搜尋完預設顯示第一頁，將currentPage重置
   currentPage = 1;
 }
+
 //- 動態產生分頁區塊
-// function paginator(num) {
-//   totalPage = Math.ceil(num / NUM_PER_PAGE);
-//   let HTMLcontent =
-//     '        <li class="page-item active"><a class="page-link" href="#" data-page="1">1</a></li>';
-//   for (let page = 2; page <= totalPage; page += 1) {
-//     HTMLcontent += `
-//             <li class="page-item"><a class="page-link" href="#" data-page=${page}>${page}</a></li>
-//     `;
-//   }
-//   pagination.innerHTML = HTMLcontent;
-// }
-//- 動態產生分頁區塊-版本二
 function calPages() {
   //-總顯示人物個數依據搜尋欄位是否有搜尋結果
   const num = filterList.length ? filterList.length : MyFriend.length;
@@ -193,17 +181,6 @@ function genPagination(totalPages, page) {
       }
     }
   }
-  //* 判定page第一頁後和最後頁前各要顯示多少頁面
-  // if (page === 1) {
-  //   afterPage += 2;
-  // } else if (page === 2) {
-  //   afterPage += 1;
-  // }
-  // if (page === totalPages) {
-  //   beforePage -= 2;
-  // } else if (page === totalPages - 1) {
-  //   beforePage -= 1;
-  // }
   for (let i = beforePage; i <= afterPage; i += 1) {
     if (i < 0) {
       continue;
@@ -257,8 +234,7 @@ function delFriend(id) {
   });
   MyFriend = restItems;
   localStorage.setItem("MyFriend", JSON.stringify(MyFriend));
-  // paginator(MyFriend.length);
-  // rederFriendList(getListByPage(1));
+  MyFriend = JSON.parse(localStorage.getItem("MyFriend"));
   genPagination(calPages(), 1);
   rederFriendList(getListByPage(1));
   return alert("已從清單刪除好友!");
@@ -333,13 +309,12 @@ modeSwitcher.addEventListener("click", function onModeswitcher(e) {
   }
   rederFriendList(getListByPage(currentPage));
 });
+
 //- 串接API顯示初始資料
 axios
   .get(BASE_URL)
   .then((res) => {
     friends.push(...res.data.results);
-    // paginator(MyFriend.length);
-    // rederFriendList(getListByPage(1));
     genPagination(calPages(), currentPage);
     rederFriendList(getListByPage(1));
   })
